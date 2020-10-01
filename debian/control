@@ -1,0 +1,12 @@
+Source: ros-melodic-am-vision-opencv
+Section: misc
+Priority: extra
+Maintainer: support <support@automodality.com>
+Build-Depends: debhelper (>= 9.0.0),
+Homepage: https://github.com/AutoModality/am_flight_plan
+Standards-Version: 3.9.2
+Package: ros-melodic-am-vision-opencv
+Replaces: ros-melodic-vision-opencv
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, 
+Description: Connect ROS to OpenCV
