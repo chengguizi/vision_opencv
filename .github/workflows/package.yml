@@ -13,6 +13,8 @@ jobs:
       - name: Package
         run: |
           fakeroot debian/rules binary
+          package_filename=$(ls *.deb | head -1)
+          echo "::set-env name=PACKAGE_FILE::$package_filename"
       - name: Deploy
         id: deploy
         uses: AutoModality/action-cloudsmith@0.2.0
@@ -24,4 +26,4 @@ jobs:
           repo: 'dev'
           distro: 'ubuntu'
           release: 'bionic'
-          file: '${{ steps.package.outputs.artifact-path }}'
+          file: '${{ env.PACKAGE_FILE }}'
