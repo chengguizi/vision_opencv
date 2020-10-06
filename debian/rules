@@ -1,16 +1,10 @@
 #!/usr/bin/make -f
 #export DH_VERBOSE = 1
-SHELL:=/bin/bash
-SRC_DIR=src
-INSTALL_DIR=debian/ros-melodic-am-perception-pcl/opt/ros/melodic
+
+INSTALL_DIR=debian/ros-melodic-am-vision-opencv/opt/ros/melodic
 
 %:
-	mkdir -p ${SRC_DIR}
-
-	cp -rf cv_bridge ${SRC_DIR}
-	cp -rf image_geometry ${SRC_DIR}
-	cp -rf vision_opencv ${SRC_DIR}
-	source /opt/ros/melodic/setup.bash && catkin_make && catkin_make install
+	dh $@
 
 override_dh_auto_install:
 	# for some reason, install: in the makefile isn't being called???
@@ -19,7 +13,8 @@ override_dh_auto_install:
 	cp -r install/lib ${INSTALL_DIR}
 	cp -r install/share ${INSTALL_DIR}
 
-clean:
-	rm -rf ${SRC_DIR}
-	rm -rf ../*.*deb
-	rm -rf build devel install
+
+override_dh_builddeb:
+	# write debian package to current directory
+	# amros container causes cross-link error when up one directory
+	dh_builddeb --destdir=.
