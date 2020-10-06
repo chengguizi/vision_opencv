@@ -10,5 +10,5 @@ Package: ros-melodic-am-vision-opencv
 Replaces: ros-melodic-vision-opencv
 Architecture: any
 Multi-Arch: foreign
-Depends: ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Building with OpenCV 4 and CUDA on the Nvidia Xavier NX

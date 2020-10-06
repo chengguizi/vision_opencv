@@ -10,7 +10,7 @@ default:
 	cp -rf image_geometry ${SRC_DIR}
 	cp -rf vision_opencv ${SRC_DIR}
 
-	source /opt/ros/melodic/setup.bash && catkin_make && source devel/setup.bash && catkin_make install
+	source /opt/ros/melodic/setup.bash && catkin_make && catkin_make install
 
 
 clean:
